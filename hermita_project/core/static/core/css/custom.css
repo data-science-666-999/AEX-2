@@ -1,0 +1,118 @@
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f9fa; /* Light grey background for the body */
+}
+
+.navbar {
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+}
+
+.navbar-brand {
+    font-weight: bold;
+    color: #0056b3 !important; /* A slightly more distinct brand color */
+}
+
+.container {
+    background-color: #fff; /* White background for main content areas */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,.05);
+}
+
+.card {
+    border: none; /* Remove default card border if using box-shadow */
+    box-shadow: 0 2px 8px rgba(0,0,0,.1);
+    transition: transform .2s ease-in-out, box-shadow .2s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,.15);
+}
+
+.card-title a {
+    color: #0056b3; /* Consistent link color for card titles */
+}
+.card-title a:hover {
+    color: #003d80;
+    text-decoration: underline;
+}
+
+.btn-primary {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+.btn-primary:hover {
+    background-color: #004080;
+    border-color: #003366;
+}
+
+.btn-success {
+    background-color: #198754; /* Bootstrap success green */
+    border-color: #198754;
+}
+.btn-success:hover {
+    background-color: #146c43;
+    border-color: #105835;
+}
+
+/* Responsive images */
+img.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Footer styling */
+.footer {
+    padding: 20px 0;
+    margin-top: 40px;
+    background-color: #e9ecef;
+    text-align: center;
+    font-size: 0.9em;
+    color: #6c757d;
+    border-top: 1px solid #dee2e6;
+}
+
+/* Adjust form styling for better spacing if needed */
+form .form-control {
+    margin-bottom: 1rem; /* Add some space below form controls */
+}
+form label {
+    font-weight: bold;
+    margin-bottom: .3rem;
+    display: inline-block;
+}
+
+/* Ensure radio buttons in registration form align nicely */
+.form-check {
+    margin-bottom: 0.5rem; /* Spacing for radio/checkbox groups */
+}
+.form-check-input {
+    margin-right: 0.5rem;
+}
+
+/* Alert styling consistency */
+.alert {
+    border-radius: .25rem; /* Standard bootstrap radius */
+}
+
+/* Homepage specific styling */
+.home-hero {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #0056b3; /* Primary color for hero */
+    color: white;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+.home-hero h1 {
+    font-size: 2.8rem;
+    font-weight: bold;
+}
+.home-hero .lead {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+}

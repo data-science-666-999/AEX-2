@@ -1,0 +1,42 @@
+{% extends "core/base.html" %}
+
+{% block title %}{{ property.title }} - Hermita{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-8">
+            <h1 class="mb-3">{{ property.title }}</h1>
+
+            {% if property.main_image %}
+                <img src="{{ MEDIA_URL }}{{ property.main_image.url }}" class="img-fluid rounded mb-4" alt="{{ property.title }}" style="max-width: 100%; height: auto;">
+            {% else %}
+                <img src="https://via.placeholder.com/800x600.png?text=No+Image+Available" class="img-fluid rounded mb-4" alt="No image available">
+            {% endif %}
+
+            <h3>Property Description</h3>
+            <p>{{ property.description|linebreaks }}</p>
+
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Details</h4>
+                    <p><strong>Rent:</strong> KES {{ property.rent_amount|floatformat:2 }}/month</p>
+                    <p><strong>Location:</strong> {{ property.address_line1 }}, {{ property.city }}{% if property.county %}, {{ property.county }}{% endif %}</p>
+                    <p><strong>Bedrooms:</strong> {{ property.bedrooms }}</p>
+                    <p><strong>Bathrooms:</strong> {{ property.bathrooms }}</p>
+                    {% if property.square_footage %}
+                        <p><strong>Square Footage:</strong> {{ property.square_footage }} sq ft</p>
+                    {% endif %}
+                    <p><strong>Status:</strong> {% if property.is_available %}Available{% else %}Not Available{% endif %}</p>
+                    <p><strong>Posted by:</strong> {{ property.landlord.username }}</p> {# Display landlord's username #}
+                    <p><strong>Posted on:</strong> {{ property.date_posted|date:"d M Y" }}</p>
+                    {# Add a "Contact Landlord" button or form later #}
+                </div>
+            </div>
+            <a href="{% url 'core:property_list' %}" class="btn btn-outline-secondary mt-3">Back to Listings</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

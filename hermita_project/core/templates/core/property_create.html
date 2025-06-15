@@ -1,0 +1,15 @@
+{% extends "core/base.html" %}
+{% load crispy_forms_tags %} {# Or render manually if not using crispy #}
+
+{% block title %}List New Property - Hermita{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>List a New Property</h2>
+    <form method="post" enctype="multipart/form-data" novalidate>
+        {% csrf_token %}
+        {{ form.as_p }} {# Basic rendering. For Bootstrap styling via widgets, this is okay. Crispy would be better. #}
+        <button type="submit" class="btn btn-primary mt-3">List Property</button>
+    </form>
+</div>
+{% endblock %}

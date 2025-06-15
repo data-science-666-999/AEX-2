@@ -1,0 +1,45 @@
+{% extends "core/base.html" %}
+{% load crispy_forms_tags %} {# Optional: if you choose to use crispy_forms #}
+
+{% block title %}Login - Hermita{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <h2>Login to Hermita</h2>
+        {% if form.errors %}
+            <div class="alert alert-danger">
+                Your username and password didn't match. Please try again.
+            </div>
+        {% endif %}
+
+        {% if next %}
+            {% if user.is_authenticated %}
+            <p>Your account doesn't have access to this page. To proceed,
+            please login with an account that has access.</p>
+            {% else %}
+            <p>Please login to see this page.</p>
+            {% endif %}
+        {% endif %}
+
+        <form method="post" action="{% url 'core:login' %}">
+            {% csrf_token %}
+            {{ form.username.label_tag }}
+            <input type="text" name="username" class="form-control mb-2" autofocus autocapitalize="none" autocomplete="username" maxlength="150" required id="id_username" placeholder="Username">
+
+            {{ form.password.label_tag }}
+            <input type="password" name="password" class="form-control mb-3" autocomplete="current-password" required id="id_password" placeholder="Password">
+
+            <button type="submit" class="btn btn-primary w-100">Login</button>
+            <input type="hidden" name="next" value="{{ next }}">
+        </form>
+        <p class="mt-3 text-center">
+            Don't have an account? <a href="{% url 'core:register' %}">Register here</a>
+        </p>
+        {# Add password reset link later if needed #}
+        {# <p class="mt-2 text-center"> #}
+        {# <a href="#">Forgot your password?</a> #}
+        {# </p> #}
+    </div>
+</div>
+{% endblock %}

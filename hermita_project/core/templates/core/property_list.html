@@ -1,0 +1,41 @@
+{% extends "core/base.html" %}
+
+{% block title %}Available Properties - Hermita{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1 class="mb-4">Available Properties for Rent</h1>
+
+    {% if properties %}
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            {% for property in properties %}
+                <div class="col">
+                    <div class="card h-100">
+                        {% if property.main_image %}
+                            <img src="{{ MEDIA_URL }}{{ property.main_image.url }}" class="card-img-top" alt="{{ property.title }}" style="max-height: 200px; object-fit: cover;">
+                        {% else %}
+                            <img src="https://via.placeholder.com/300x200.png?text=No+Image" class="card-img-top" alt="No image available" style="max-height: 200px; object-fit: cover;">
+                        {% endif %}
+                        <div class="card-body">
+                            <h5 class="card-title"><a href="{% url 'core:property_detail' property.id %}" class="text-decoration-none">{{ property.title }}</a></h5>
+                            <p class="card-text">
+                                <strong>Location:</strong> {{ property.city }}{% if property.county %}, {{ property.county }}{% endif %}<br>
+                                <strong>Rent:</strong> KES {{ property.rent_amount|floatformat:2 }}/month<br>
+                            </p>
+                            {# Link to a future property detail page #}
+                            {# <a href="#" class="btn btn-primary">View Details</a> #}
+                        </div>
+                        <div class="card-footer">
+                             <small class="text-muted">Posted: {{ property.date_posted|date:"d M Y" }}</small>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="alert alert-info" role="alert">
+            No properties currently available. Please check back later!
+        </div>
+    {% endif %}
+</div>
+{% endblock %}
