@@ -225,7 +225,7 @@ class AEXDataProcessor:
             data['ATR'] = ta.volatility.average_true_range(data['High'], data['Low'], data['Close'])
             
             # Volume Indicators
-            data['Volume_SMA'] = ta.volume.volume_sma(data['Close'], data['Volume'])
+            data['Volume_SMA'] = ta.trend.sma_indicator(data['Volume'], window=20)
             data['OBV'] = ta.volume.on_balance_volume(data['Close'], data['Volume'])
             
             # Price-based features
