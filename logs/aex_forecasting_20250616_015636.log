@@ -1,0 +1,33 @@
+2025-06-16 01:56:36,814 - __main__ - INFO - Logging system initialized successfully
+2025-06-16 01:56:36,818 - __main__ - INFO - === RUNNING SYSTEM VALIDATION ===
+2025-06-16 01:56:36,818 - __main__ - INFO - Downloading AEX data from 2010-01-01 to 2024-12-31
+2025-06-16 01:56:37,337 - __main__ - INFO - Successfully downloaded 3838 trading days of data
+2025-06-16 01:56:37,338 - __main__ - INFO - Computing technical indicators...
+2025-06-16 01:56:37,383 - __main__ - INFO - Added 28 technical indicators
+2025-06-16 01:56:37,383 - __main__ - INFO - Starting data cleaning process...
+2025-06-16 01:56:37,395 - __main__ - INFO - Data cleaning completed: 3838 -> 3756 rows (97.86% retained)
+2025-06-16 01:56:37,395 - __main__ - INFO - Scaling features using minmax method...
+2025-06-16 01:56:37,401 - __main__ - INFO - Successfully scaled 33 features
+2025-06-16 01:56:37,402 - __main__ - INFO - Creating sequences for LSTM training...
+2025-06-16 01:56:37,548 - __main__ - INFO - Created 3696 sequences with shape (3696, 60, 32)
+2025-06-16 01:56:37,548 - __main__ - INFO - Features used: ['Open', 'High', 'Low', 'Volume', 'Dividends', 'Stock Splits', 'SMA_5', 'SMA_10', 'SMA_20', 'SMA_50', 'EMA_5', 'EMA_10', 'EMA_20', 'MACD', 'MACD_signal', 'MACD_histogram', 'RSI', 'Stochastic_K', 'Stochastic_D', 'BB_upper', 'BB_middle', 'BB_lower', 'BB_width', 'ATR', 'Volume_SMA', 'OBV', 'High_Low_Ratio', 'Close_Open_Ratio', 'Returns', 'Log_Returns', 'Volatility_5', 'Volatility_20']
+2025-06-16 01:56:37,549 - __main__ - INFO - Data Pipeline Validation:
+2025-06-16 01:56:37,549 - __main__ - INFO -   data_download: SUCCESS: 3838 records
+2025-06-16 01:56:37,549 - __main__ - INFO -   technical_indicators: SUCCESS: 33 features
+2025-06-16 01:56:37,549 - __main__ - INFO -   data_cleaning: SUCCESS: 3756 records retained
+2025-06-16 01:56:37,549 - __main__ - INFO -   feature_scaling: SUCCESS
+2025-06-16 01:56:37,549 - __main__ - INFO -   sequence_creation: SUCCESS: 3696 sequences created
+2025-06-16 01:56:37,583 - __main__ - INFO - Attention Model Validation:
+2025-06-16 01:56:37,584 - __main__ - INFO -   attention_shape: torch.Size([1, 60])
+2025-06-16 01:56:37,584 - __main__ - INFO -   output_shape: torch.Size([1, 1])
+2025-06-16 01:56:37,584 - __main__ - INFO -   forward_pass: SUCCESS
+2025-06-16 01:56:37,584 - __main__ - INFO -   total_parameters: 58241
+2025-06-16 01:56:37,584 - __main__ - INFO -   trainable_parameters: 58241
+2025-06-16 01:56:37,584 - __main__ - INFO -   model_size_mb: 0.22217178344726562
+2025-06-16 01:56:37,587 - __main__ - INFO - Baseline Model Validation:
+2025-06-16 01:56:37,587 - __main__ - INFO -   output_shape: torch.Size([1, 1])
+2025-06-16 01:56:37,587 - __main__ - INFO -   forward_pass: SUCCESS
+2025-06-16 01:56:37,587 - __main__ - INFO -   total_parameters: 100351
+2025-06-16 01:56:37,587 - __main__ - INFO -   trainable_parameters: 100351
+2025-06-16 01:56:37,587 - __main__ - INFO -   model_size_mb: 0.3828086853027344
+2025-06-16 01:56:37,588 - __main__ - INFO - Execution completed successfully!
