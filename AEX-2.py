@@ -687,8 +687,7 @@ class ModelTrainer:
             optimizer,
             mode='min',
             factor=self.config.training_config['scheduler_factor'],
-            patience=self.config.training_config['scheduler_patience'],
-            verbose=True
+            patience=self.config.training_config['scheduler_patience']
         )
         
         criterion = nn.MSELoss()
