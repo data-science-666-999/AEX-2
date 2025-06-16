@@ -4,6 +4,7 @@ import pickle
 import json
 import logging
 from typing import Dict, List, Tuple, Any
+from utils import NumpyJSONEncoder
 import torch
 import optuna
 import numpy as np
@@ -255,7 +256,7 @@ class AEXForecastingPipeline:
             with open('reports/final_results_summary.json', 'w') as f:
                 # Custom serializer for optuna objects if needed, or just store relevant parts
                 json.dump({k: (v if not isinstance(v, optuna.Study) else str(v))
-                           for k, v in final_results.items()}, f, indent=2)
+                           for k, v in final_results.items()}, f, indent=2, cls=NumpyJSONEncoder)
 
             logger.info("=== PIPELINE EXECUTION COMPLETED SUCCESSFULLY ===")
             logger.info(f"Total execution time: {execution_time}")
