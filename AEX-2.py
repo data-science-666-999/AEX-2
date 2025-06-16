@@ -1546,10 +1546,25 @@ class AEXForecastingPipeline:
                 }
             }
             
+            # Helper function to convert numpy.float32 to Python float for JSON serialization
+            def convert_numpy_floats(obj):
+                if isinstance(obj, dict):
+                    return {k: convert_numpy_floats(v) for k, v in obj.items()}
+                elif isinstance(obj, list):
+                    return [convert_numpy_floats(i) for i in obj]
+                elif isinstance(obj, np.float32):
+                    return float(obj)
+                return obj
+
+            data_to_serialize = {}
+            for k, v in final_results.items():
+                if k == 'optimization_study': # Exclude optuna.Study object
+                    continue
+                data_to_serialize[k] = convert_numpy_floats(v)
+
             # Save final results summary
             with open('reports/final_results_summary.json', 'w') as f:
-                json.dump({k: v for k, v in final_results.items() 
-                          if k not in ['optimization_study']}, f, indent=2)
+                json.dump(data_to_serialize, f, indent=2)
             
             logger.info("=== PIPELINE EXECUTION COMPLETED SUCCESSFULLY ===")
             logger.info(f"Total execution time: {execution_time}")
